@@ -3,12 +3,40 @@ import { Container, Form, InputGroup, Button } from "react-bootstrap"
 import City from '../components/City'
 import axios from 'axios'
 import cities from '../data/cities.json'
-const apiKey = import.meta.env.VITE_API_KEY
+const API_KEY = import.meta.env.VITE_API_KEY
+import useSavedCities from '../context/SavedCitiesContext'
 
 const Home = () => {
     const [query, setQuery] = useState('')
     const [results, setResults] = useState([])
     const [forecasts, setForecasts] = useState([])
+    const [closestCity, setClosestCity] = useState(null);
+    // const {savedCities} = useSavedCities()
+
+    
+    const getUserLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const { latitude, longitude } = position.coords;
+                try {
+                    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
+                    const data = response.data;
+                    console.log(data)
+                    setClosestCity(data);
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                }
+            });
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+    };
+
+    useState(() => {
+        getUserLocation();
+    }, []);
+
+    
 
     const searchCities = async () => {
         if(!query) return
@@ -22,7 +50,7 @@ const Home = () => {
             const response = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
                 params:{
                     q: result.name,
-                    appid: apiKey
+                    appid: API_KEY
                 }
             })
             const data = response.data
@@ -34,7 +62,7 @@ const Home = () => {
         <Container className='text-center'>
             <h1>Weather</h1>
             <h2>Current Location</h2>
-            <p>Display City Card Here</p>
+            {closestCity && <City city={{ name: closestCity.name, country: closestCity.sys.country, id: closestCity.id }} forecasts={[closestCity]} />}
             <h2>Search Cities</h2>
             <Form>
                 <input type='text' placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} />
@@ -44,6 +72,13 @@ const Home = () => {
             {results && (
                  results.map((result) => <City key={result.id} city={result} forecasts={forecasts} />)
             )}
+
+            {/* {savedCities && (
+                <>
+                <h2>Saved Cities</h2>
+                {savedCities.map((city) => <City key={city.id} city={city} forecasts={forecasts} />)}
+                </>
+            )} */}
         </Container>
         
     )
