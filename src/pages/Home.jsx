@@ -32,7 +32,10 @@ const Home = () => {
     }
     return(
         <Container className='text-center'>
-            <h1>Home</h1>
+            <h1>Weather</h1>
+            <h2>Current Location</h2>
+            <p>Display City Card Here</p>
+            <h2>Search Cities</h2>
             <Form>
                 <input type='text' placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} />
                 <Button variant='primary' type='button' className='mx-2' onClick={searchCities}>Search</Button>
