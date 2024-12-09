@@ -1,0 +1,27 @@
+.card {
+    border-radius: 10rem !important;
+    background: linear-gradient(to right, #e0ffff, #afeeee);
+
+}
+.card-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background: inherit; /* Inherit background from parent */
+    border-radius: inherit; /* Inherit border-radius from parent */
+}
+
+.weather-left {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.temperature-display {
+    font-size: 2rem;
+}
+
+a{
+    text-decoration: none !important;
+}
