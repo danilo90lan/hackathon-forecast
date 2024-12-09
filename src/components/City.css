@@ -1,13 +1,17 @@
 .card {
     border-radius: 10rem !important;
-    background: linear-gradient(to right, #e0ffff, #afeeee);
+    background: #efefef !important;
 
 }
 .card-body {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background: inherit; /* Inherit background from parent */
     border-radius: inherit; /* Inherit border-radius from parent */
+}
+
+.weather-icon {
+    font-size: 2rem;
 }
 
 .weather-left {
