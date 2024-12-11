@@ -93,6 +93,7 @@ const City = ({ city, forecasts }) => {
                     {showForecast ? 'Hide Forecast' : 'Show Forecast'}
                 </Button>
             </Card.Body>
+            {/* Call the Forecast component passing the city name prop*/}
             {showForecast && <Forecast cityName={city.name} />}
         </Card>
     );
