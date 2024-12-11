@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Spinner } from 'react-bootstrap';
 
 const Forecast = ({ cityName }) => {
     const [forecastData, setForecastData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const API_KEY = "e05d694d41514a7b861114121241112"; 
+    const API_KEY = "e05d694d41514a7b861114121241112";
 
     useEffect(() => {
         const fetchForecast = async () => {
@@ -32,7 +32,10 @@ const Forecast = ({ cityName }) => {
     };
 
     if (loading) {
-        return <div>Loading forecast...</div>;
+        return (
+        <div>
+            <Spinner animation="border" variant="primary" className="mb-3" />
+        </div>);
     }
 
     if (error) {
@@ -59,10 +62,10 @@ const Forecast = ({ cityName }) => {
                                         <h5 className="mb-0">{weekday}</h5>
                                         <h5 className="mb-0">{day.date}</h5>
                                     </div>
-                                    <img 
-                                        src={day.day.condition.icon} 
-                                        alt={day.day.condition.text} 
-                                        className="my-2" 
+                                    <img
+                                        src={day.day.condition.icon}
+                                        alt={day.day.condition.text}
+                                        className="my-2"
                                         style={{ width: '60px', height: '60px' }} // Smaller icon size
                                     />
                                     <p>{day.day.condition.text}</p>
