@@ -7,7 +7,7 @@ const Forecast = ({ cityName }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const API_KEY = "e05d694d41514a7b861114121241112";
+    const API_KEY = "e05d694d41514a7b861114121241112"; 
 
     useEffect(() => {
         const fetchForecast = async () => {
@@ -31,11 +31,22 @@ const Forecast = ({ cityName }) => {
         return weekdays[date.getDay()];
     };
 
+    const getRainPercentage = (precipitation) => {
+        // This assumes precipitation > 0 means some rain, you can adjust based on your needs
+        if (precipitation > 0) {
+            return `${Math.min(100, precipitation * 10)}%`; // Adjust this scale as needed
+        }
+        return "0%"; // No rain
+    };
+
     if (loading) {
         return (
-        <div>
-            <Spinner animation="border" variant="primary" className="mb-3" />
-        </div>);
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        );
     }
 
     if (error) {
@@ -54,6 +65,7 @@ const Forecast = ({ cityName }) => {
             <Row className="g-3 justify-content-around">
                 {forecast.forecastday.map((day, index) => {
                     const weekday = getWeekday(day.date);
+                    const rainPercentage = getRainPercentage(day.day.totalprecip_mm.toFixed(1)); // Get rain percentage from precipitation
                     return (
                         <Col xs={12} sm={6} md={4} lg={3} key={index}>
                             <Card className="h-100 rounded-3 shadow-sm bg-white">
@@ -62,15 +74,16 @@ const Forecast = ({ cityName }) => {
                                         <h5 className="mb-0">{weekday}</h5>
                                         <h5 className="mb-0">{day.date}</h5>
                                     </div>
-                                    <img
-                                        src={day.day.condition.icon}
-                                        alt={day.day.condition.text}
-                                        className="my-2"
-                                        style={{ width: '60px', height: '60px' }} // Smaller icon size
+                                    <img 
+                                        src={day.day.condition.icon} 
+                                        alt={day.day.condition.text} 
+                                        className="my-2" 
+                                        style={{ width: '40px', height: '40px' }} // Smaller icon size
                                     />
                                     <p>{day.day.condition.text}</p>
                                     <p><strong>Max Temp:</strong> {day.day.maxtemp_c}°C</p>
                                     <p><strong>Min Temp:</strong> {day.day.mintemp_c}°C</p>
+                                    <p><strong>Chance of Rain:</strong> {rainPercentage}</p> {/* Added rain percentage */}
                                 </Card.Body>
                             </Card>
                         </Col>
