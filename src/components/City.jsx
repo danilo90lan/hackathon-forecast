@@ -3,7 +3,7 @@ import { useSavedCities } from '../context/SavedCitiesContext'
 import { Card, Button, Spinner } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Forecast from '../pages/Forecast' // Import the Forecast component
+import Forecast from '../pages/SevenDayForecast' // Import the Forecast component
 import './City.css'
 
 const City = ({ city, forecasts }) => {
@@ -71,7 +71,7 @@ const City = ({ city, forecasts }) => {
   const convertToC = (temp - 273.15).toFixed(0)
 
   return (
-    <Link className='city' to={`/details/${city.id}`}>
+    <Link to={`/details/${city.id}`}>
       <Card className='my-2 city-card'>
         <Card.Body className='city-card-body'>
           <span className='weather-icon ms-3'>
@@ -88,16 +88,6 @@ const City = ({ city, forecasts }) => {
         </Card.Body>
 
       </Card>
-      <div className='button-row'> <Button className='button' onClick={() => addToSavedCities(city)}>Save</Button>
-        <Button
-          onClick={() => setShowForecast(!showForecast)}
-          className='button'
-        >
-          {showForecast ? 'Hide Forecast' : 'Show Forecast'}
-        </Button>
-      </div>
-
-      {showForecast && <Forecast cityName={city.name} />}
     </Link>
   )
 }
