@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import cities from '../data/cities.json'
-import SevenDayForecast from './SevenDayForecast'
+import SevenDayForecast from '../components/SevenDayForecast'
 
 const Details = () => {
     const {id} = useParams()

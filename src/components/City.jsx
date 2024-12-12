@@ -3,7 +3,7 @@ import { useSavedCities } from '../context/SavedCitiesContext'
 import { Card, Button, Spinner } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Forecast from '../pages/SevenDayForecast' // Import the Forecast component
+import Forecast from './SevenDayForecast' // Import the Forecast component
 import './City.css'
 
 const City = ({ city, forecasts }) => {
