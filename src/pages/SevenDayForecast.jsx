@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Row, Col, Spinner } from 'react-bootstrap'
 import DayCard from '../components/DayCard'
 
-const Forecast = ({ cityName }) => {
+const SevenDayForecast = ({ cityName }) => {
   const [forecastData, setForecastData] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -84,4 +84,4 @@ const Forecast = ({ cityName }) => {
   )
 }
 
-export default Forecast
+export default SevenDayForecast
