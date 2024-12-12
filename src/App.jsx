@@ -2,11 +2,11 @@ import { Container, Navbar, Nav } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Home from './pages/Home'
+import Details from './pages/Details'
 import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
 
-function App() {
-
+function App () {
   return (
     <SavedCitiesProvider>
       <Router>
@@ -22,10 +22,10 @@ function App() {
             </Navbar.Collapse>
           </div>
 
-
         </nav>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/details/:id' element={<Details />} />
         </Routes>
       </Router>
       <ToastContainer
