@@ -54,6 +54,7 @@ const Home = () => {
                 }
             })
             const data = response.data
+            console.log(data);
             setForecasts(prev=> [...prev, data])
         })
         
