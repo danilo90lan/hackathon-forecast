@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Row, Col, Spinner } from 'react-bootstrap'
-import DayCard from '../components/DayCard'
+import DayCard from './DayCard'
 
 const SevenDayForecast = ({ cityName }) => {
   const [forecastData, setForecastData] = useState(null)
