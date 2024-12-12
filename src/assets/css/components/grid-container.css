@@ -1,0 +1,9 @@
+.grid-container {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .grid-container .box {
+    justify-content: space-around;
+  }

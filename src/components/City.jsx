@@ -15,7 +15,7 @@ const City = ({ city, forecasts }) => {
 
     // The useEffect runs when the loading state changes.
     // Set a timer for 10 seconds for the loading phase. 
-    // If forecast is not available the "Loading forecast" string is not longer displayed
+    // If forecast is not available the "Loading forecast" spinner is not longer displayed
     useEffect(() => {
         const timer = setTimeout(() => {
             if (loading) {
@@ -77,8 +77,7 @@ const City = ({ city, forecasts }) => {
 
     const convertToC = (temp - 273.15).toFixed(0);
     return (
-
-        <Link>
+        <>
             <Card className='my-2'>
                 <Card.Body>
                 <span className="weather-icon ms-3">
@@ -96,10 +95,12 @@ const City = ({ city, forecasts }) => {
                         {convertToC}°c
                         
                     </Card.Text>
-                    <Button variant='primary' onClick={() => addToSavedCities(city)}>Save</Button>
+                    
                 </Card.Body>
+                
             </Card>
-        </Link>
+            <Button className="button" variant='primary' onClick={() => addToSavedCities(city)}>Save</Button>
+            </>
     )
 }
 

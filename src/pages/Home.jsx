@@ -13,7 +13,7 @@ const Home = () => {
     const [closestCity, setClosestCity] = useState(null);
     // const {savedCities} = useSavedCities()
 
-    
+
     const getUserLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(async (position) => {
@@ -36,10 +36,10 @@ const Home = () => {
         getUserLocation();
     }, []);
 
-    
+
 
     const searchCities = async () => {
-        if(!query) return
+        if (!query) return
         console.log('Searching...')
         const results = await cities.filter((city) => {
             return city.name.toLowerCase().includes(query.toLowerCase())
@@ -48,39 +48,43 @@ const Home = () => {
 
         results.forEach(async (result) => {
             const response = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
-                params:{
+                params: {
                     q: result.name,
                     appid: API_KEY
                 }
             })
             const data = response.data
-            setForecasts(prev=> [...prev, data])
+            setForecasts(prev => [...prev, data])
         })
-        
+
     }
-    return(
-        <Container className='text-center'>
-            <h1>Weather</h1>
-            <h2>Current Location</h2>
-            {closestCity && <City city={{ name: closestCity.name, country: closestCity.sys.country, id: closestCity.id }} forecasts={[closestCity]} />}
-            <h2>Search Cities</h2>
-            <Form>
-                <input type='text' placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} />
-                <Button variant='primary' type='button' className='mx-2' onClick={searchCities}>Search</Button>
-            </Form>
+    return (
+        <main>
+        <section id='hero'>
+            <Container className='text-center margin-xy-1 blurred-bg '>
+                <h1>Weather</h1>
+                <h2>Current Location</h2>
+                {closestCity && <City city={{ name: closestCity.name, country: closestCity.sys.country, id: closestCity.id }} forecasts={[closestCity]} />}
+                <h2>Search Cities</h2>
+                <Form>
+                    <input type='text' placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} />
+                    <Button variant='primary' type='button' className='mx-2' onClick={searchCities}>Search</Button>
+                </Form>
 
-            {results && (
-                 results.map((result) => <City key={result.id} city={result} forecasts={forecasts} />)
-            )}
+                {results && (
+                    results.map((result) => <City key={result.id} city={result} forecasts={forecasts} />)
+                )}
 
-            {/* {savedCities && (
+                {/* {savedCities && (
                 <>
                 <h2>Saved Cities</h2>
                 {savedCities.map((city) => <City key={city.id} city={city} forecasts={forecasts} />)}
                 </>
             )} */}
-        </Container>
-        
+            </Container>
+        </section>
+        </main>
+
     )
 }
 

@@ -1,0 +1,17 @@
+/** Add styles here */
+@layer reset, base, components, utilities;
+@import url(./reset.css) layer(reset);
+@import url(./base.css) layer(base);
+@import url(./components.css) layer(components);
+@import url(./utilities.css) layer(utilities);
+
+
+@layer main {
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        gap: 1rem;
+    }
+}

@@ -1,13 +1,16 @@
 .card {
     border-radius: 10rem !important;
     background: #efefef !important;
+    max-width: 75%;
+    color: #333; 
 
 }
 .card-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background: inherit; /* Inherit background from parent */
-    border-radius: inherit; /* Inherit border-radius from parent */
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  padding: 1rem;
+
 }
 
 .weather-icon {

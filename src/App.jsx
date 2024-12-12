@@ -10,11 +10,8 @@ function App() {
   return (
     <SavedCitiesProvider>
       <Router>
-        <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
-          <Container>
-            <Navbar.Brand as={Link} to='/'>
-              WeatherWise
-            </Navbar.Brand>
+        <nav>
+          <div id='nav-panel'>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='me-auto'>
@@ -23,8 +20,10 @@ function App() {
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-          </Container>
-        </Navbar>
+          </div>
+
+
+        </nav>
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
