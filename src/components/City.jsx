@@ -72,30 +72,33 @@ const City = ({ city, forecasts }) => {
     const convertToC = (temp - 273.15).toFixed(0);
 
     return (
-        <Card className="my-2">
-            <Card.Body>
-                <span className="weather-icon ms-3">
-                    {getWeatherIcon(forecast?.weather?.[0]?.main)}
-                </span>
-                <div className="weather-left">
-                    <h3>{city?.name}, {city?.country}</h3>
-                    <p>{forecast?.weather?.[0]?.main}</p>
-                </div>
-                <Card.Text className="temperature-display">
-                    {convertToC}°C
-                </Card.Text>
-                <Button variant="primary" onClick={() => addToSavedCities(city)}>Save</Button>
+        <div className='city'>
+            <Card className="my-2 city-card">
+                <Card.Body className="city-card-body">
+                    <span className="weather-icon ms-3">
+                        {getWeatherIcon(forecast?.weather?.[0]?.main)}
+                    </span>
+                    <div className="weather-left">
+                        <h3>{city?.name}, {city?.country}</h3>
+                        <p>{forecast?.weather?.[0]?.main}</p>
+                    </div>
+                    <Card.Text className="temperature-display">
+                        {convertToC}°C
+                    </Card.Text>
+
+                </Card.Body>
+
+            </Card>
+            <div className='button-row'> <Button className='button' onClick={() => addToSavedCities(city)}>Save</Button>
                 <Button
-                    variant="secondary"
                     onClick={() => setShowForecast(!showForecast)}
-                    className="ms-2"
+                    className="button"
                 >
                     {showForecast ? 'Hide Forecast' : 'Show Forecast'}
-                </Button>
-            </Card.Body>
-            {/* Call the Forecast component passing the city name prop*/}
+                </Button></div>
+
             {showForecast && <Forecast cityName={city.name} />}
-        </Card>
+        </div>
     );
 };
 
