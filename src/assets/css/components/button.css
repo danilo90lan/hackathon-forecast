@@ -18,3 +18,7 @@
     background-color: var(--clr-primary-a20);
   }
   
+  .button-row{
+    display: flex;
+    gap: 1rem;
+  }

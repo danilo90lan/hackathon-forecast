@@ -15,7 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
-    height: 100dvh;
+    min-height: 100dvh;
     color: white;
     width: 100%;
   }
