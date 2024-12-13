@@ -7,6 +7,7 @@ import { Container } from 'react-bootstrap'
 import { useWeather } from '../context/WeatherContext'
 import './Details.css'
 
+
 const Details = () => {
     const { id } = useParams()
     const cityName = cities.filter((city) => city.id == id)[0].name
@@ -57,8 +58,11 @@ const Details = () => {
                             <p>Wind </p><p className="data">{forecast?.current?.wind_kph} kph</p>
                         </div>
                         <div className="details-card">
-                            <p className="data">Sunrise {forecast?.forecast?.forecastday?.[0]?.astro?.sunrise}</p>
-                            <p className="data">Sunset {forecast?.forecast?.forecastday?.[0]?.astro?.sunset}</p>
+
+                            <div className='sunrise'>
+                                <i className="fas fa-sun"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunrise}</p>
+                                <i className="fas fa-moon"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunset}</p>
+                            </div>
                         </div>
                         <div className="details-card">
                             <p>UV Index </p><p className="data">{forecast?.current?.uv}</p>

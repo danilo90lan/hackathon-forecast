@@ -28,6 +28,16 @@
     font-weight: 700;
 }
 
+.details-card i {
+    font-size: 25px;
+}
+
+
+.sunrise .data {
+    margin:0.5rem;
+}
+
+
 .temp p {
     font-weight: bold;
     font-size: 20px;
@@ -39,4 +49,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.details-card p:first-child {
+    color: #0b509e;
 }
