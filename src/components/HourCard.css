@@ -1,6 +1,5 @@
-.day-card {
+.hour-card {
     background: #efefef;
-    min-width: 5rem;
     padding: 1rem;
     border-radius: 3rem;
     text-align: center;
@@ -8,7 +7,7 @@
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.day-card-body {
+.hour-card-body {
     display: flex;
     gap:1rem;
     flex-direction: column;

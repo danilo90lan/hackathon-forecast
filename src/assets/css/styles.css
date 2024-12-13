@@ -14,4 +14,27 @@
         min-height: 100vh;
         gap: 1rem;
     }
+
+    .cities{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+    .forecast {
+        width: 100%; 
+    }
+
+    .forecast-container {
+        width: 100%;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        display: flex; 
+    }
+
+    .forecast-items {
+        display: flex; /* Arrange items horizontally */
+        gap: 1rem;
+        margin-left: 0; /* Ensure first item is at the left edge */
+    }
 }
