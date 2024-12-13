@@ -17,6 +17,6 @@
     align-items: center;
     justify-content: center;
   }
-.container-half-width{
-    width: 50%
+.half-width{
+    width: 50%;
 }
