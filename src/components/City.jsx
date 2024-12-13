@@ -4,7 +4,8 @@ import { Card, Button, Spinner } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {useWeather} from '../context/WeatherContext'
+import { useWeather } from '../context/WeatherContext'
+
 const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY
 import './City.css'
 
@@ -15,7 +16,9 @@ const City = ({ city }) => { // Use a regular function component with props
     const [forecast, setForecast] = useState(null);
     const [error, setError] = useState(null)
     const navigate = useNavigate()
-    const {setSelectedCityForecast} = useWeather()
+    const { setSelectedCityForecast } = useWeather()
+
+    const isSaved = savedCities.some((item) => item.id === city.id);
 
     useEffect(() => {
         const fetchForecast = async () => {
@@ -71,6 +74,12 @@ const City = ({ city }) => { // Use a regular function component with props
         navigate(`/details/${city.id}`)
     }
 
+    const handleSaveCity = (event) => {
+        // Prevent handleClick from being triggered
+        event.stopPropagation();
+        addToSavedCities(city)  // Add city to saved cities list
+    }
+
     const condition = forecast?.current?.condition?.text
     const icon = forecast?.current?.condition?.icon
     const tempC = (forecast?.current?.temp_c).toFixed(0)
@@ -93,6 +102,12 @@ const City = ({ city }) => { // Use a regular function component with props
                     <Card.Text className='temperature-display'>
                         {tempC}°C
                     </Card.Text>
+
+                    <Button  className={"save"} 
+                    onClick={handleSaveCity}
+                    disabled={isSaved}>
+                        {`${isSaved ? "Added" : "Save"}`}
+                    </Button>
 
                 </Card.Body>
 

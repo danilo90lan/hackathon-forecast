@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
 import WeatherProvider from './context/WeatherContext'
 
+
 function App() {
   return (
     <WeatherProvider>

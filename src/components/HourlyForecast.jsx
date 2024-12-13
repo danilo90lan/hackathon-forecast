@@ -17,7 +17,7 @@ const HourlyForecast = ({ cityName, forecast }) => {
   return (
     <div className='forecast box'>
       <h2 className='row'>Hourly Forecast</h2>
-      <Row classname='forecast-row'>
+      <Row className='forecast-row'>
         {forecastData && forecastData.map((hour, index) => {
 
           // Get rain percentage from precipitation
