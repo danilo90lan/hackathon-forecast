@@ -69,7 +69,6 @@ const City = ({ city }) => { // Use a regular function component with props
     }
 
     const handleClick = () => {
-        console.log(forecast)
         setSelectedCityForecast(forecast)
         navigate(`/details/${city.id}`)
     }

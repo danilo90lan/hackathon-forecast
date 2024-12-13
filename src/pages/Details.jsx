@@ -14,7 +14,6 @@ const Details = () => {
     const navigate = useNavigate();
     const { selectedCityForecast } = useWeather()
     const forecast = selectedCityForecast
-    console.log(forecast)
 
     // Conditional rendering for  missing data
     if (!forecast) {
@@ -31,9 +30,6 @@ const Details = () => {
     return (
         <div id='hero'>
             <Container className='text-center margin-xy-1 blurred-bg '>
-                <button onClick={() => navigate(-1)}>
-                    Go Back
-                </button>
                 <h1>{cityName}</h1>
                 <Container className='half-width text-center margin-xy-1 blurred-bg dark-text'>
                     <div className="temp">

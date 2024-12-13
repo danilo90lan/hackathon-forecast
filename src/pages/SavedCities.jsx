@@ -24,9 +24,6 @@ const SavedCities = () => {
         <main>
             <section id='hero'>
 <Container className='text-center margin-xy-1 blurred-bg ' >
-                <button onClick={() => navigate(-1)}>
-                    Go Back
-                </button>
                 <h1>Saved Cities</h1>
                 <div className="city-list">
                     {savedCities.length > 0 ? (

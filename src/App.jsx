@@ -20,10 +20,10 @@ function App() {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='me-auto'>
-                <Nav.Link as={NavLink} to='/' activeClassName='active'>
+                <Nav.Link as={NavLink} to='/'>
                   Home
                 </Nav.Link>
-                <Nav.Link as={NavLink} to='/saved' activeClassName='active'>
+                <Nav.Link as={NavLink} to='/saved'>
                   Saved Cities
                 </Nav.Link>
               </Nav>
