@@ -16,8 +16,15 @@ export default function SavedCitiesProvider ({ children }) {
       toast.info(`${city.name} is already in your saved cities.`)
     }
   }
+
+  const removeCityFromSavedCities = (city) => {
+    const updatedCities = savedCities.filter((item) => item.id !== city.id)
+    setSavedCities(updatedCities)
+    toast.success(`${city.name} has been removed from your saved cities!`)
+  }
+
   return (
-    <SavedCitiesContext.Provider value={{ savedCities, addToSavedCities }}>
+    <SavedCitiesContext.Provider value={{ savedCities, addToSavedCities, removeCityFromSavedCities }}>
       {children}
     </SavedCitiesContext.Provider>
   )

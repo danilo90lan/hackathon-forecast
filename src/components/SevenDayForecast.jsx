@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Row, Col, Spinner } from 'react-bootstrap'
-import DayCard from '../components/DayCard'
+import DayCard from './DayCard'
 
-const Forecast = ({ cityName }) => {
-  const [forecastData, setForecastData] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  const API_KEY = 'e05d694d41514a7b861114121241112'
-
-  useEffect(() => {
-    const fetchForecast = async () => {
-      try {
-        setLoading(true)
-        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=7&aqi=no`)
-        setForecastData(response.data)
-        setLoading(false)
-      } catch (err) {
-        console.err('Failed to fetch forecast data', err)
-        setLoading(false)
-      }
-    }
-
-    fetchForecast()
-  }, [cityName])
+const SevenDayForecast = ({ cityName, forecast }) => {
+  const forecastData = forecast?.forecast?.forecastday
 
   const getWeekday = (dateString) => {
     const date = new Date(dateString)
@@ -31,21 +12,6 @@ const Forecast = ({ cityName }) => {
     return weekdays[date.getDay()]
   }
 
-  if (loading) {
-    return (
-      <div>
-        <Spinner animation='border' role='status'>
-          <span className='visually-hidden'>Loading...</span>
-        </Spinner>
-      </div>
-    )
-  }
-
-  if (!forecastData) {
-    return <div>No data available</div>
-  }
-
-  const { forecast } = forecastData
 
   // Function to calculate rain percentage based on precipitation
   const getRainPercentage = (precipitation) => {
@@ -58,9 +24,10 @@ const Forecast = ({ cityName }) => {
 
   return (
     <div className='forecast box'>
-      <h2 className='row'>7-day Forecast for {cityName}</h2>
-      <Row>
-        {forecast.forecastday.map((day, index) => {
+      <h2 className='row'>7-day Forecast</h2>
+      <div className='row forecast-container'>
+        <div className='forecast-items'>
+        {forecastData && forecastData.map((day, index) => {
           const weekday = getWeekday(day.date)
 
           // Get rain percentage from precipitation
@@ -79,9 +46,10 @@ const Forecast = ({ cityName }) => {
             </Col>
           )
         })}
-      </Row>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default Forecast
+export default SevenDayForecast
