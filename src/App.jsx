@@ -1,45 +1,53 @@
-import { Container, Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Home from './pages/Home'
+import Details from './pages/Details'
+import SavedCities from './pages/SavedCities'
 import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
+import WeatherProvider from './context/WeatherContext'
+import { Nav, Navbar } from 'react-bootstrap'
+
 
 function App() {
-
   return (
-    <SavedCitiesProvider>
-      <Router>
-        <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
-          <Container>
-            <Navbar.Brand as={Link} to='/'>
-              WeatherWise
-            </Navbar.Brand>
+    <WeatherProvider>
+      <SavedCitiesProvider>
+
+        <Router>
+        <nav>
+          <div id='nav-panel'>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='me-auto'>
-                <Nav.Link as={Link} to='/'>
+                <Nav.Link as={NavLink} to='/' activeClassName='active'>
                   Home
+                </Nav.Link>
+                <Nav.Link as={NavLink} to='/saved' activeClassName='active'>
+                  Saved Cities
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-          </Container>
-        </Navbar>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </Router>
-      <ToastContainer
-        position='top-right'
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </SavedCitiesProvider>
+          </div>
+        </nav>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/saved' element={<SavedCities />} />
+            <Route path='/details/:id' element={<Details />} />
+          </Routes>
+        </Router>
+        <ToastContainer
+          position='top-right'
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </SavedCitiesProvider>
+    </WeatherProvider>
   )
 }
 

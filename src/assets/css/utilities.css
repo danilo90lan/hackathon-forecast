@@ -1,0 +1,29 @@
+.disabled{
+    background-color: var(--clr-neutral-a20);
+    cursor: not-allowed;
+  }
+  
+  .disabled:hover{
+    background-color: var(--clr-neutral-a20);
+  }
+  
+  .margin-y-1{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+  }
+  .margin-x-1{
+      margin-left: 1rem;
+      margin-right: 1rem;
+  }
+  
+  .margin-xy-1{
+      margin: 1rem;
+  }
+  
+  .blurred-bg{
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.85);
+  }
+  .dark-text{
+    color: #333;
+  }

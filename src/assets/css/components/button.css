@@ -1,0 +1,24 @@
+.button {
+    background-color: var(--clr-primary-a0);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 300ms;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .button:hover {
+    background-color: var(--clr-primary-a10);
+  }
+  
+  .button:active {
+    background-color: var(--clr-primary-a20);
+  }
+  
+  .button-row{
+    display: flex;
+    gap: 1rem;
+  }

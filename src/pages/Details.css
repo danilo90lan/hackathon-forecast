@@ -1,0 +1,92 @@
+.details {
+    color: #333;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Create 3 equal-width columns */
+    gap: 5rem; 
+    margin:3rem;
+}
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    aspect-ratio: 1;
+    width: 400px;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    text-align: center;
+    
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0px 4px 5px 0px rgba(0, 0, 0, 0.14), 
+                0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+.data {
+    margin: 1.5rem;
+    font-size: 3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.details-card i {
+    font-size: 25px;
+}
+
+.sunrise, .sunset{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sunrise i, .sunset i{
+    font-size: 3rem;
+}
+.sunrise .data {
+    margin:0.5rem;
+}
+
+
+.temp p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-text{
+    font-size: 2rem;
+}
+
+.pressure{
+    line-height: 48px;
+}
+
+.details-card p:first-child {
+    color: #0b509e;
+}
+    .dew-point{
+        width: 50px; 
+        height: 50px;
+        border-radius: 50%;
+        background-color: #aeaeae;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inhg{
+        font-weight: 500;
+    }
