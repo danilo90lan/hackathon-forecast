@@ -1,41 +1,44 @@
 # WeatherWise
 
-## Plan
- 
-- Current Conditions: Displays the current temperature, humidity, wind speed, and weather conditions with beautiful icons.
-- Hourly Forecast: Shows the hour-by-hour forecast for the next 24 hours, allowing users to plan their day accordingly.
-- Daily Forecast: Provides a 7-day forecast with high and low temperatures, precipitation chances, and a summary of the expected conditions.
-- Location Search: Enables users to easily search for and save their favorite locations for quick access.
-- Interactive Map: May contain a map that displays weather conditions visually, allowing users to explore weather patterns across different regions.
+WeatherWise is a modern weather application that provides real-time weather updates, and forecasts.
 
-- Local Storage for saved cities (We won't use a db for this.)
+## Features
 
-- Default Behaviour:
-    - Show users location based off IP, and then Precise location if permission is given?  
-    - Show a default value regardless of where user is, and they can change it.
+- **Current Conditions**: Displays current temperature, humidity, wind speed, and weather conditions with intuitive icons.
+- **Hourly Forecast**: Hour-by-hour forecast for the current day to help plan your day.
+- **Daily Forecast**: 7-day forecast with high and low temperatures, precipitation chances, and condition icons.
+- **Location Search**: Search and save your favorite locations for quick access.
+- **Local Storage**: Saves cities locally without the need for a database.
+- **Default Behavior**:
+  - Auto-detects location based on IP or precise location with permission.
 
-- Cards:
-    - Glance cards should contain:
-        - Icon of weather
-        - Name of place, and country
-        - Name of weather (Partly Cloudy, Clear)
-        - Temperature (Choose between C, F, and K in user preferences.)
+## Cards
 
-- Details:
-    - Details should have:
-        - Name of place
-        - Name of weather
-        - Temperature (Choose between C, F, and K)
-        - Icon next to weather
-        - Feels like
-        - High & Low Temp
-        - Hourly Forecast
-        - Future Forecast
-        - Rain %
-        - Wind
-        - Sunrise & Sunset
-        - UV Index
-        - AQI
-        - Visibility (Choose between km and mi)
-        - Humidity & Dew Point
-        - Pressure (Choose between QNH and inHg)
+- **Glance Cards**:
+  - Weather icon
+  - Location name and country
+  - Weather condition (e.g., Partly Cloudy, Clear)
+  - Temperature (Celsius)
+
+## Details
+
+- **Detailed Weather Information**:
+  - Location name
+  - Weather condition with icon
+  - Temperature
+  - Feels like temperature
+  - High & low temperatures
+  - Hourly and future forecasts
+  - Precipitation chance
+  - Wind speed
+  - Sunrise & sunset times
+  - UV Index
+  - Humidity & dew point
+  - Pressure (inHg)
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/weatherwise.git
