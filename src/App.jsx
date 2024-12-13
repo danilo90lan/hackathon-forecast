@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Home from './pages/Home'
 import Details from './pages/Details'
+import SavedCities from './pages/SavedCities'
 import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
 import WeatherProvider from './context/WeatherContext'
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/saved' element={<SavedCities />} />
           <Route path='/details/:id' element={<Details />} />
         </Routes>
       </Router>
