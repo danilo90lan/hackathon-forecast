@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Form, InputGroup, Button } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
 import City from '../components/City'
 import axios from 'axios'
 import cities from '../data/cities.json'
@@ -49,7 +49,6 @@ const Home = () => {
             <section id='hero'>
                 <Container className='text-center margin-xy-1 blurred-bg '>
                     <h1>Weather</h1>
-                    <div><Link to="/saved" className="save-city">View Saved Cities</Link></div>
                     <h2>Current Location</h2>
                     {closestCity && <City city={{ name: closestCity.name, country: closestCity.sys.country, id: closestCity.id }} />}
                     <h2>Search Cities</h2>

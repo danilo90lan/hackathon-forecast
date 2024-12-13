@@ -1,10 +1,10 @@
-import { FaSun, FaCloud, FaCloudRain, FaSnowflake, FaSmog } from 'react-icons/fa'
 import { useSavedCities } from '../context/SavedCitiesContext'
 import { Card, Button, Spinner } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useWeather } from '../context/WeatherContext'
+import PropTypes from 'prop-types'
 
 const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY
 import './City.css'
@@ -80,9 +80,15 @@ const City = ({ city }) => { // Use a regular function component with props
         addToSavedCities(city)  // Add city to saved cities list
     }
 
-    const condition = forecast?.current?.condition?.text
-    const icon = forecast?.current?.condition?.icon
-    const tempC = (forecast?.current?.temp_c).toFixed(0)
+    const condition = forecast?.current?.condition?.text || '';
+    const icon = forecast?.current?.condition?.icon || '';
+    const tempC = forecast?.current?.temp_c 
+    ? (forecast.current.temp_c).toFixed(0)
+    : '';
+
+    //If forecast is null or undefined, prevent errors by setting defaults
+    if (!forecast) return <p>No forecast data available</p>;
+
 
     return (
         <div onClick={handleClick}>
@@ -100,7 +106,7 @@ const City = ({ city }) => { // Use a regular function component with props
                         <p>{condition}</p>
                     </div>
                     <Card.Text className='temperature-display'>
-                        {tempC}°C
+                        {tempC}°
                     </Card.Text>
 
                     <Button  className={"save"} 
@@ -114,5 +120,13 @@ const City = ({ city }) => { // Use a regular function component with props
             </Card>
         </div>
     )
+}
+
+City.propTypes = {
+    city: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        country: PropTypes.string.isRequired
+    }).isRequired
 }
 export default City

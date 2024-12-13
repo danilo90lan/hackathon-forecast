@@ -1,5 +1,4 @@
-import { Container, Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Home from './pages/Home'
 import Details from './pages/Details'
@@ -7,20 +6,30 @@ import SavedCities from './pages/SavedCities'
 import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
 import WeatherProvider from './context/WeatherContext'
+import { Nav, Navbar } from 'react-bootstrap'
 
 
 function App() {
   return (
     <WeatherProvider>
       <SavedCitiesProvider>
+
+        <Router>
         <nav>
           <div id='nav-panel'>
-            <Link to='/'>Home</Link>
-            {/* <Link to='/saved'>Saved Cities</Link> */}
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='me-auto'>
+                <Nav.Link as={NavLink} to='/' activeClassName='active'>
+                  Home
+                </Nav.Link>
+                <Nav.Link as={NavLink} to='/saved' activeClassName='active'>
+                  Saved Cities
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
           </div>
-
         </nav>
-        <Router>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/saved' element={<SavedCities />} />
