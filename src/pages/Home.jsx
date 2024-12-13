@@ -55,7 +55,7 @@ const Home = () => {
                     <h2>Search Cities</h2>
                     <Form>
                         <input type='text' placeholder='Search...' value={query} onChange={(e) => setQuery(e.target.value)} />
-                        <Button variant='primary' type='button' className='mx-2' onClick={searchCities}>Search</Button>
+                        <Button type='button' onClick={searchCities}>Search</Button>
                     </Form>
                     <div className='cities'>
                         {results && (

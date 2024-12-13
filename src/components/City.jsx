@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useWeather } from '../context/WeatherContext'
+
 const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY
 import './City.css'
 
@@ -16,6 +17,8 @@ const City = ({ city }) => { // Use a regular function component with props
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     const { setSelectedCityForecast } = useWeather()
+
+    const isSaved = savedCities.some((item) => item.id === city.id);
 
     useEffect(() => {
         const fetchForecast = async () => {
@@ -100,8 +103,10 @@ const City = ({ city }) => { // Use a regular function component with props
                         {tempC}°C
                     </Card.Text>
 
-                    <Button variant="primary" className="save" onClick={handleSaveCity}>
-                        Save City
+                    <Button  className={"save"} 
+                    onClick={handleSaveCity}
+                    disabled={isSaved}>
+                        {`${isSaved ? "Added" : "Save"}`}
                     </Button>
 
                 </Card.Body>
