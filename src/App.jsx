@@ -12,25 +12,32 @@ import WeatherProvider from './context/WeatherContext'
 function App() {
   return (
     <WeatherProvider>
-    <SavedCitiesProvider>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/saved' element={<SavedCities />} />
-          <Route path='/details/:id' element={<Details />} />
-        </Routes>
-      </Router>
-      <ToastContainer
-        position='top-right'
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </SavedCitiesProvider>
+      <SavedCitiesProvider>
+        <nav>
+          <div id='nav-panel'>
+            <Link to='/'>Home</Link>
+            {/* <Link to='/saved'>Saved Cities</Link> */}
+          </div>
+
+        </nav>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/saved' element={<SavedCities />} />
+            <Route path='/details/:id' element={<Details />} />
+          </Routes>
+        </Router>
+        <ToastContainer
+          position='top-right'
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </SavedCitiesProvider>
     </WeatherProvider>
   )
 }
