@@ -57,3 +57,12 @@
 a{
     text-decoration: none !important;
 }
+
+.save {
+    background: green;
+    border-radius: 20px;
+    color: white;
+    padding: 1rem;
+    height: 60px;
+    border:none;
+}
