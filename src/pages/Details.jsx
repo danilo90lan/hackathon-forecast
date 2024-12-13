@@ -50,36 +50,39 @@ const Details = () => {
                         <p>High {(forecast?.forecast?.forecastday?.[0]?.day?.maxtemp_c).toFixed(0)}° - Low {(forecast?.forecast?.forecastday?.[0]?.day?.mintemp_c).toFixed(0)}°</p>
                     </div>
 
-                    <div className="details">
-                        <div className="details-card">
-                            <p>Precipitation </p><p className="data">{forecast?.current?.precip_mm}mm</p>
-                        </div>
-                        <div className="details-card">
-                            <p>Wind </p><p className="data">{forecast?.current?.wind_kph} kph</p>
-                        </div>
-                        <div className="details-card">
-
-                            <div className='sunrise'>
-                                <i className="fas fa-sun"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunrise}</p>
-                                <i className="fas fa-moon"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunset}</p>
-                            </div>
-                        </div>
-                        <div className="details-card">
-                            <p>UV Index </p><p className="data">{forecast?.current?.uv}</p>
-                        </div>
-                        <div className="details-card">
-                            <p>Humidity </p><p className="data">{forecast?.current?.humidity}%</p>
-                        </div>
-                        <div className="details-card">
-                            <p>Pressure </p><p className="data">{forecast?.current?.pressure_in} inHG</p>
-                        </div>
-                    </div>
+                    
 
 
                 </Container>
                 <HourlyForecast cityName={cityName} forecast={forecast} />
                 <SevenDayForecast cityName={cityName} forecast={forecast} />
+                <div className="details">
+                        <div className="details-card">
+                            <h3>Precipitation </h3><p className="data">{forecast?.current?.precip_mm}mm</p>
+                        </div>
+                        <div className="details-card">
+                            <h3>Wind </h3><p className="data"><span>{(forecast?.current?.wind_kph).toFixed(0)} kph</span><span className='small-text'>From {forecast?.current?.wind_dir}</span></p>
+                        </div>
+                        <div className="details-card">
 
+                            <div className='sunrise'>
+                                <i className="fas fa-sun"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunrise}</p>
+                            </div>
+                            <div className='sunset'>    
+                                <i className="fas fa-moon"></i><p className="data"> {forecast?.forecast?.forecastday?.[0]?.astro?.sunset}</p>
+                            </div>
+                        </div>
+                        <div className="details-card">
+                            <h3>UV Index </h3><p className="data">{(forecast?.current?.uv).toFixed(0)}</p>
+                        </div>
+                        <div className="details-card">
+                            <h3>Humidity </h3><p className="data">{forecast?.current?.humidity}%</p>
+                            <p><span className='dew-point'>{(forecast?.current?.dewpoint_c).toFixed(0)}°</span> Dew Point</p>
+                        </div>
+                        <div className="details-card">
+                            <h3>Pressure </h3><p className="data pressure"><span>{forecast?.current?.pressure_in}</span><span className='inhg'> inHG</span></p>
+                        </div>
+                    </div>
             </Container>
         </div>
 
