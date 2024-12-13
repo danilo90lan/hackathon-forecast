@@ -5,24 +5,13 @@ import Home from './pages/Home'
 import Details from './pages/Details'
 import 'react-toastify/dist/ReactToastify.css'
 import SavedCitiesProvider from './context/SavedCitiesContext'
+import WeatherProvider from './context/WeatherContext'
 
-function App () {
+function App() {
   return (
+    <WeatherProvider>
     <SavedCitiesProvider>
       <Router>
-        <nav>
-          <div id='nav-panel'>
-            <Navbar.Toggle aria-controls='basic-navbar-nav' />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='me-auto'>
-                <Nav.Link as={Link} to='/'>
-                  Home
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </div>
-
-        </nav>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/details/:id' element={<Details />} />
@@ -39,6 +28,7 @@ function App () {
         pauseOnHover
       />
     </SavedCitiesProvider>
+    </WeatherProvider>
   )
 }
 
