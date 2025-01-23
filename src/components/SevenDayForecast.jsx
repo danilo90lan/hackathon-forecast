@@ -32,10 +32,12 @@ const SevenDayForecast = ({ cityName, forecast }) => {
 
           // Get rain percentage from precipitation
           const rainPercentage = getRainPercentage(day.day.totalprecip_mm.toFixed(1))
+          const today = new Date().toISOString().split('T')[0];
+          
           return (
             <Col xs={12} sm={6} md={4} lg={3} key={index}>
               <DayCard
-                date={day.date}
+                date={day.date === today ? "today" : day.date}
                 weekday={weekday}
                 icon={day.day.condition.icon}
                 condition={day.day.condition.text}
